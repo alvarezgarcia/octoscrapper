@@ -1,0 +1,15 @@
+{
+  "name": "octoscrapper",
+  "version": "0.0.1",
+  "description": "Scrapper de instrumentos para Fundación SES",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "3Banderas",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.4",
+    "immutable": "^3.8.1"
+  }
+}
