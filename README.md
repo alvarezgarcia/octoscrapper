@@ -15,6 +15,9 @@
 ## Entornos
 
 ### Desarrollo
+```sh
+npm run dev
+```
 
 ### Producción
 
