@@ -1,0 +1,16 @@
+{
+	"login": {
+		"url": "http://sme.fundses.org.ar/",
+		"user": "admin_ses",
+		"password": "drup4l_Ses",
+		"formBuildId": "form-WGGY0_DwQZdiBiUj1fZTbgkbjogiPO7-KLJUDl4mEFI",
+		"formId": "user_login_block",
+		"op": "Iniciar+sesión"
+	},
+	"instrumentos": [
+		{
+			"nombreInstrumento": "centros-educativos",
+			"url": "http://sme.fundses.org.ar/?q=listado-para-centros-educativos"
+		}
+	]
+}
