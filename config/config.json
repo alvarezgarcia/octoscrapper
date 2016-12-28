@@ -11,6 +11,10 @@
 		{
 			"nombreInstrumento": "centros-educativos",
 			"url": "http://sme.fundses.org.ar/?q=listado-para-centros-educativos"
+		},
+		{
+			"nombreInstrumento": "entrevistas-a-empresas",
+			"url": "http://sme.fundses.org.ar/?q=listado-de-entrevistas-a-empresas"
 		}
 	]
 }
