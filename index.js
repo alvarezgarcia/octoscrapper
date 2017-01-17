@@ -20,6 +20,52 @@ request.post({
 				if(err) throw err;
 				console.log('Conectado...');
 
+
+        //function getPage({nombreInstrumento, url}, request) {
+        //
+        //
+        //
+
+        function getPage(t, tt) {
+          return new Promise ( (resolve, reject) => {
+            resolve(t)
+          }).then(salida => salida)
+        }
+
+        function delay(e) {
+          return new Promise( (resolve, reject) => {
+            const r = Math.floor(Math.random() * 10) + 1  
+            console.log('Soy ' + e + ' Muero en ' +r )
+            setTimeout(() => resolve(e), r * 1000)
+          }).then(e => e)
+        }
+
+        function doSomething(s) {
+          return new Promise ( (resolve, reject) => {
+            console.log('Ya estoy en doSomething y soy ' + s)
+            resolve(s + ' sxe')
+          }).then(salida => salida)
+
+        }
+
+        function comp(t) {
+            getPage(t)
+            .then(delay)
+            .then(doSomething)
+            .then(console.log)
+        }
+
+        const arr = ['hc', 'bc', 'dc']
+
+        const tasks = arr.map((a) => {
+          return (done) => {
+            comp(a)
+          }
+        })
+
+        async.parallel(tasks, (al) => console.log(a))
+
+        /*
 				const instrumentosPagesTasks = config.instrumentos.map((c) => getPages(c, request));
 
 				async.parallel(instrumentosPagesTasks, (err, downloadData) => {
@@ -30,6 +76,7 @@ request.post({
 					})
 
 				})
+        */
 })
 
 
