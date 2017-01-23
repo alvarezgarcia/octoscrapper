@@ -9,48 +9,55 @@ import { pipe } from './lib/'
 
 const config = require('./config/config.json');
 
+//TODO: Arreglar esta importacion
+const MongoClient = require('mongodb').MongoClient
 
-let request = requestModule.defaults({jar: true})
-request.post({
-	url							: config.login.url,
-	form: {
-		name					: config.login.user, 
-		pass					: config.login.password, 
-		form_build_id	: config.login.formBuildId,
-		form_id				: config.login.formId,
-		op						: config.login.op
-	}}, (err, httpResponse, body) => {
-				if(err) throw err
-				console.log('Conectado...')
+MongoClient.connect(config.mongoUri, (err, db) => {
 
-				if(!fs.existsSync(config.saveDir))
-					fs.mkdirSync(config.saveDir)
+	let request = requestModule.defaults({jar: true})
+	request.post({
+		url							: config.login.url,
+		form: {
+			name					: config.login.user, 
+			pass					: config.login.password, 
+			form_build_id	: config.login.formBuildId,
+			form_id				: config.login.formId,
+			op						: config.login.op
+		}}, (err, httpResponse, body) => {
+					if(err) throw err
+					console.log('Conectado...')
 
-				const enabledInstruments = config.instrumentos.filter( (i) => i.enabled )
+					if(!fs.existsSync(config.saveDir))
+						fs.mkdirSync(config.saveDir)
 
-				Promise.all(enabledInstruments.map( (i) => {
+					const enabledInstruments = config.instrumentos.filter( (i) => i.enabled )
 
-					console.log(`Scrappeando ${i.nombreInstrumento}...`)
+					Promise.all(enabledInstruments.map( (i) => {
 
-					const state = {
-						request				: request,
-						instrumentInfo: i,
-						saveDir				: config.saveDir
-					}
+						console.log(`Scrappeando ${i.nombreInstrumento}...`)
 
-					return pipe(state)
-				})).then(finalStates  => {
+						const state = {
+							request				: request,
+							instrumentInfo: i,
+							saveDir				: config.saveDir,
+							db						: db
+						}
 
-					finalStates.forEach( (fs) => {
+						return pipe(state)
+					})).then(finalStates  => {
 
-						console.log(`\nResultados para ${fs.instrumentInfo.nombreInstrumento}:`)
-						const results = fs.results
+						finalStates.forEach( (fs) => {
 
-						results.forEach( (r) => {
-							console.log(r)
+							console.log(`\nResultados para ${fs.instrumentInfo.nombreInstrumento}:`)
+							const results = fs.results
+
+							results.forEach( (r) => {
+								console.log(r)
+							})
+
+							db.close();
 						})
 
 					})
-
-				})
+	})
 })

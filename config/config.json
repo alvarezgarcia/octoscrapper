@@ -24,5 +24,6 @@
 			"url": "http://sme.fundses.org.ar/?q=listado-consulta-joven-final"
 		}
 	],
-	"saveDir": "/home/alumno/fundses-scrapper-html-cache"
+	"saveDir": "/home/alumno/fundses-scrapper-html-cache",
+	"mongoUri": "mongodb://localhost:27017/ses"
 }
