@@ -1,11 +1,14 @@
+import fs from 'fs'
+
 import _ from 'lodash';
 import Immutable from 'immutable';
 import async from 'async';
 import requestModule from 'request'
 
-import { scrap, getPages, downloadHtml } from './utils/';
+import { pipe } from './lib/'
 
 const config = require('./config/config.json');
+
 
 let request = requestModule.defaults({jar: true})
 request.post({
@@ -17,66 +20,37 @@ request.post({
 		form_id				: config.login.formId,
 		op						: config.login.op
 	}}, (err, httpResponse, body) => {
-				if(err) throw err;
-				console.log('Conectado...');
+				if(err) throw err
+				console.log('Conectado...')
 
+				if(!fs.existsSync(config.saveDir))
+					fs.mkdirSync(config.saveDir)
 
-        //function getPage({nombreInstrumento, url}, request) {
-        //
-        //
-        //
+				const enabledInstruments = config.instrumentos.filter( (i) => i.enabled )
 
-        function getPage(t, tt) {
-          return new Promise ( (resolve, reject) => {
-            resolve(t)
-          }).then(salida => salida)
-        }
+				Promise.all(enabledInstruments.map( (i) => {
 
-        function delay(e) {
-          return new Promise( (resolve, reject) => {
-            const r = Math.floor(Math.random() * 10) + 1  
-            console.log('Soy ' + e + ' Muero en ' +r )
-            setTimeout(() => resolve(e), r * 1000)
-          }).then(e => e)
-        }
+					console.log(`Scrappeando ${i.nombreInstrumento}...`)
 
-        function doSomething(s) {
-          return new Promise ( (resolve, reject) => {
-            console.log('Ya estoy en doSomething y soy ' + s)
-            resolve(s + ' sxe')
-          }).then(salida => salida)
+					const state = {
+						request				: request,
+						instrumentInfo: i,
+						saveDir				: config.saveDir
+					}
 
-        }
+					return pipe(state)
+				})).then(finalStates  => {
 
-        function comp(t) {
-            getPage(t)
-            .then(delay)
-            .then(doSomething)
-            .then(console.log)
-        }
+					finalStates.forEach( (fs) => {
 
-        const arr = ['hc', 'bc', 'dc']
+						console.log(`\nResultados para ${fs.instrumentInfo.nombreInstrumento}:`)
+						const results = fs.results
 
-        const tasks = arr.map((a) => {
-          return (done) => {
-            comp(a)
-          }
-        })
+						results.forEach( (r) => {
+							console.log(r)
+						})
 
-        async.parallel(tasks, (al) => console.log(a))
-
-        /*
-				const instrumentosPagesTasks = config.instrumentos.map((c) => getPages(c, request));
-
-				async.parallel(instrumentosPagesTasks, (err, downloadData) => {
-					const downloadHtmlTasks = downloadData.map((dd) => downloadHtml(dd, request));
-
-					async.parallel(downloadHtmlTasks, (err, htmlData) => {
-						console.log(htmlData)
 					})
 
 				})
-        */
 })
-
-
