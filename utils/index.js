@@ -122,11 +122,11 @@ export function saveHtml(state) {
 
 export function processHtml(state) {
 
+	const name = state.instrumentInfo.nombreInstrumento
 	return new Promise ( (resolve, reject) => {
 
 		const lastPage = state.lastPage
 		const indexPages = _genRangeInclusive(lastPage)
-		const name = state.instrumentInfo.nombreInstrumento
 		const fields = instrumentFields[name]
 
 		const processTasks = indexPages.map( (i) => {
@@ -138,7 +138,6 @@ export function processHtml(state) {
 
 			return (done) => {
 
-				console.log('fileToOpen ', fileToOpen)
 				fs.readFile(fileToOpen, 'utf8', (err, data) => {
 
 						let $ = cheerio.load(data)
@@ -179,8 +178,23 @@ export function processHtml(state) {
 			})
 
 
-	}).then(finalList => Object.assign({}, state, { finalList: finalList }))
+	}).then(finalList => Object.assign({}, state, {  name: name, finalList: finalList } ))
 
+}
+
+export function upload(state) {
+
+	return new Promise ( (resolve, reject) => {
+		const collectionName = state.name
+		const db = state.db
+		const toSave = state.finalList
+
+		db.collection(collectionName).drop()
+		db.collection(collectionName).insert(toSave, (err, records) => {
+			resolve(records)
+		})
+
+	}).then(records => Object.assign({}, state, {records: records.insertedCount}))
 }
 
 	/*

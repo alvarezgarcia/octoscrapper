@@ -34,13 +34,15 @@ MongoClient.connect(config.mongoUri, (err, db) => {
 
 					Promise.all(enabledInstruments.map( (i) => {
 
-						console.log(`Scrappeando ${i.nombreInstrumento}...`)
+						const name = i.nombreInstrumento
+
+						console.log(`Scrappeando ${name}...`)
 
 						const state = {
+							db						: db,
 							request				: request,
-							instrumentInfo: i,
 							saveDir				: config.saveDir,
-							db						: db
+							instrumentInfo: i
 						}
 
 						return pipe(state)
@@ -48,16 +50,19 @@ MongoClient.connect(config.mongoUri, (err, db) => {
 
 						finalStates.forEach( (fs) => {
 
-							console.log(`\nResultados para ${fs.instrumentInfo.nombreInstrumento}:`)
+							const name = fs.name
 							const results = fs.results
+
+							console.log(`\nResultados para ${name}:`)
 
 							results.forEach( (r) => {
 								console.log(r)
 							})
 
-							db.close();
 						})
 
+						db.close();
 					})
+
 	})
 })
