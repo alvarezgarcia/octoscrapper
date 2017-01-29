@@ -53,7 +53,8 @@ export function getPages(state) {
 			let $ = cheerio.load(body)
 
 			const pages = $('.pager-last').children()
-			const lastPage = pages.attr('href').split('&page=')[1]
+			const pager = pages.attr('href')
+			const lastPage = pager? pager.split('&page=')[1] : 0
 
 			resolve(parseInt(lastPage))
 		})
