@@ -10,7 +10,7 @@
 	"instrumentos": [
 		{
 			"nombreInstrumento": "centros-educativos",
-			"enabled": true,
+			"enabled": false,
 			"url": "http://sme.fundses.org.ar/?q=listado-para-centros-educativos"
 		},
 		{
@@ -22,6 +22,11 @@
 			"nombreInstrumento": "consulta-joven",
 			"enabled": false,
 			"url": "http://sme.fundses.org.ar/?q=listado-consulta-joven-final"
+		},
+		{
+			"nombreInstrumento": "entrevista-asoc-de-caficultores",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-entrevistas-asoc-caficultores"
 		}
 	],
 	"saveDir": "/home/alumno/fundses-scrapper-html-cache",
