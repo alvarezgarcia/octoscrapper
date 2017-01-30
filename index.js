@@ -13,6 +13,7 @@ const config = require('./config/config.json');
 const MongoClient = require('mongodb').MongoClient
 
 MongoClient.connect(config.mongoUri, (err, db) => {
+	console.log('Mongo OK')
 
 	let request = requestModule.defaults({jar: true})
 	request.post({

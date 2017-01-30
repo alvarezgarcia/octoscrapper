@@ -9,24 +9,89 @@
 	},
 	"instrumentos": [
 		{
+			"nombreInstrumento": "consulta-joven",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-consulta-joven-final"
+		},
+		{
 			"nombreInstrumento": "centros-educativos",
-			"enabled": false,
+			"enabled": true,
 			"url": "http://sme.fundses.org.ar/?q=listado-para-centros-educativos"
 		},
 		{
 			"nombreInstrumento": "entrevistas-a-empresas",
-			"enabled": false,
+			"enabled": true,
 			"url": "http://sme.fundses.org.ar/?q=listado-de-entrevistas-a-empresas"
-		},
-		{
-			"nombreInstrumento": "consulta-joven",
-			"enabled": false,
-			"url": "http://sme.fundses.org.ar/?q=listado-consulta-joven-final"
 		},
 		{
 			"nombreInstrumento": "entrevista-asoc-de-caficultores",
 			"enabled": true,
 			"url": "http://sme.fundses.org.ar/?q=listado-de-entrevistas-asoc-caficultores"
+		},
+		{
+			"nombreInstrumento": "entrevista-para-instituciones",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-entrevistas-para-instituciones"
+		},
+		{
+			"nombreInstrumento": "entrevistas-a-productores-y-familias",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-entrevistas-a-productores-y-familias"
+		},
+		{
+			"nombreInstrumento": "linea-de-base-joven",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-l-nea-de-base-joven-2016-"
+		},
+		{
+			"nombreInstrumento": "linea-de-base-formadores-territorio",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-l-nea-de-base-formadores-territorio"
+		},
+		{
+			"nombreInstrumento": "rubrica-de-competencias-momento-0",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-r-brica-de-competencias-momento-0"
+		},
+		{
+			"nombreInstrumento": "rubrica-de-competencias-momento-1",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-r-brica-de-competencias-momento-1"
+		},
+		{
+			"nombreInstrumento": "fichas-pfo",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-fichas-pfo-"
+		},
+		{
+			"nombreInstrumento": "abandono-de-jovenes",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-abandono-de-j-venes"
+		},
+		{
+			"nombreInstrumento": "egreso-formadores-territorio",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-l-nea-de-egreso-formadores-territorio"
+		},
+		{
+			"nombreInstrumento": "egreso-jovenes",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-l-nea-de-egreso-j-venes"
+		},
+		{
+			"nombreInstrumento": "ficha-institucion-gaag",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-ficha-de-instituci-n-gaag"
+		},
+		{
+			"nombreInstrumento": "rubrica-de-competencias-momento-2",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-r-brica-de-competencias-momento-2"
+		},
+		{
+			"nombreInstrumento": "monitoreo-de-derivaciones",
+			"enabled": true,
+			"url": "http://sme.fundses.org.ar/?q=listado-de-monitoreo-de-derivaciones"
 		}
 	],
 	"saveDir": "/home/alumno/fundses-scrapper-html-cache",
