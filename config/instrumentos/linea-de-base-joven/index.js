@@ -1,0 +1,19 @@
+export default [
+	"views-field-field-2-pa-s",
+	"views-field-field-3-departamento",
+	"views-field-field-4-municipio",
+	"views-field-field-5-cefi",
+	"views-field-field-6-v-nombre-y-apellido",
+	"views-field-field-6-1-nombre-importado-sme-p",
+	"views-field-field-fecha-",
+	"views-field-field-8-confianza-en-m-mismo",
+	"views-field-field-9-tomar-decisiones",
+	"views-field-field-10-resolver-situaciones-co",
+	"views-field-field-11-comunicarme-con-los-dem",
+	"views-field-field-12-trabajar-en-equipo",
+	"views-field-field-13-organizar-y-planificar-",
+	"views-field-field-12-qu-resultado-esperas-lo",
+	"views-field-field-12-1-aclarar-resultado-esp",
+	"views-field-title",
+	"views-field-field-8-sexo"
+]
