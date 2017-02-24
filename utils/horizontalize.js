@@ -3,11 +3,14 @@ import async from 'async';
 
 
 const collectionList = [ 
+	/*
 	'abandono-de-jovenes',
 	'centros-educativos',
 	'consulta-joven',
 	'egreso-formadores-territorio',
+	*/
 	'egreso-jovenes',
+	/*
 	'entrevista-asoc-de-caficultores',
 	'entrevista-para-instituciones',
 	'entrevistas-a-empresas',
@@ -20,8 +23,13 @@ const collectionList = [
 	'rubrica-de-competencias-momento-0',
 	'rubrica-de-competencias-momento-1',
 	'rubrica-de-competencias-momento-2'
+	*/
 ]
 
+
+const integersFields = [
+	'14_ ¿Cuál es tu remuneración aproximada?'
+]
 
 MongoClient.connect('mongodb://localhost:27017/ses', (err, db) => {
 	console.log('Mongo OK')
@@ -42,7 +50,10 @@ MongoClient.connect('mongodb://localhost:27017/ses', (err, db) => {
 
 					const fff = fields.reduce( (acc, f, k) => {
 						const field = fields[k].replace(/\./g, '_')
-						const value = values[k][i] 
+
+						const isIntegerField = integersFields.indexOf(field)
+						const value = isIntegerField > -1? parseInt(values[k][i]): values[k][i]
+
 
 						return Object.assign({}, acc, {[field]: value })
 					}, {})
