@@ -3,6 +3,7 @@ import async from 'async';
 
 
 const collectionList = [ 
+/*
 	'abandono-de-jovenes',
 	'centros-educativos',
 	'consulta-joven',
@@ -12,7 +13,9 @@ const collectionList = [
 	'entrevista-para-instituciones',
 	'entrevistas-a-empresas',
 	'entrevistas-a-productores-y-familias',
+*/
 	'ficha-institucion-gaag',
+/*
 	'fichas-pfo',
 	'linea-de-base-formadores-territorio',
 	'linea-de-base-joven',
@@ -20,13 +23,16 @@ const collectionList = [
 	'rubrica-de-competencias-momento-0',
 	'rubrica-de-competencias-momento-1',
 	'rubrica-de-competencias-momento-2'
+*/
 ]
 
 
 const integersFields = [
 	'14_ ¿Cuál es tu remuneración aproximada?',
 	'7_ Cantidad total de instituciones que conforman este GAAG',
-	'24_ Cantidad de convenios/acuerdos firmados para “formalizar” las oportunidades de formación y pasantía y empleo a jóvenes con'
+	'24_ Cantidad de convenios/acuerdos firmados para “formalizar” las oportunidades de formación y pasantía y empleo a jóvenes con',
+	'12_ Indicar cantidad de familias del GAAG',
+		'10_ Indicar cantidad de asociaciones de productores del GAAG'
 ]
 
 MongoClient.connect('mongodb://localhost:27017/ses', (err, db) => {
