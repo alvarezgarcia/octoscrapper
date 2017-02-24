@@ -3,8 +3,23 @@ import async from 'async';
 
 
 const collectionList = [ 
-	'abandono-de-jovenes'
-
+	'abandono-de-jovenes',
+	'centros-educativos',
+	'consulta-joven',
+	'egreso-formadores-territorio',
+	'egreso-jovenes',
+	'entrevista-asoc-de-caficultores',
+	'entrevista-para-instituciones',
+	'entrevistas-a-empresas',
+	'entrevistas-a-productores-y-familias',
+	'ficha-institucion-gaag',
+	'fichas-pfo',
+	'linea-de-base-formadores-territorio',
+	'linea-de-base-joven',
+	'monitoreo-de-derivaciones',
+	'rubrica-de-competencias-momento-0',
+	'rubrica-de-competencias-momento-1',
+	'rubrica-de-competencias-momento-2'
 ]
 
 
@@ -17,7 +32,7 @@ MongoClient.connect('mongodb://localhost:27017/ses', (err, db) => {
 			const collection = db.collection(c)
 			collection.find().toArray( (err, doc) => {
 
-				const collectionName = c+'-horiz'
+				const collectionName = 'indicadores-'+c
 				db.collection(collectionName).drop()
 
 				const fields = doc.map( d => d.pregunta)
