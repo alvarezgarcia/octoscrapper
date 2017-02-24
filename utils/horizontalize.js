@@ -3,14 +3,11 @@ import async from 'async';
 
 
 const collectionList = [ 
-	/*
 	'abandono-de-jovenes',
 	'centros-educativos',
 	'consulta-joven',
 	'egreso-formadores-territorio',
-	*/
 	'egreso-jovenes',
-	/*
 	'entrevista-asoc-de-caficultores',
 	'entrevista-para-instituciones',
 	'entrevistas-a-empresas',
@@ -23,12 +20,13 @@ const collectionList = [
 	'rubrica-de-competencias-momento-0',
 	'rubrica-de-competencias-momento-1',
 	'rubrica-de-competencias-momento-2'
-	*/
 ]
 
 
 const integersFields = [
-	'14_ ¿Cuál es tu remuneración aproximada?'
+	'14_ ¿Cuál es tu remuneración aproximada?',
+	'7_ Cantidad total de instituciones que conforman este GAAG',
+	'24_ Cantidad de convenios/acuerdos firmados para “formalizar” las oportunidades de formación y pasantía y empleo a jóvenes con'
 ]
 
 MongoClient.connect('mongodb://localhost:27017/ses', (err, db) => {
@@ -42,6 +40,8 @@ MongoClient.connect('mongodb://localhost:27017/ses', (err, db) => {
 
 				const collectionName = 'indicadores-'+c
 				db.collection(collectionName).drop()
+
+				console.log(collectionName + ' iniciada')
 
 				const fields = doc.map( d => d.pregunta)
 				const values = doc.map( d => d.respuestas)
@@ -59,11 +59,12 @@ MongoClient.connect('mongodb://localhost:27017/ses', (err, db) => {
 					}, {})
 
 					db.collection(collectionName).insert(fff, (err, records) => {
-						console.log(records)
+						//console.log(records)
 					})
 
 				})
 
+				console.log(collectionName + ' terminada')
 				done(null, 123)
 
 			})
